@@ -1,8 +1,10 @@
 {
   "name": "sveltekit-session-storage",
   "version": "0.0.1",
+  "license": "BSD-3-Clause",
+  "description": "SvelteKit Session Storage: how you can improve UX by temporarily caching user form entries then repopulating fields on browser refreshes.",
   "scripts": {
-    "dev": "svelte-kit dev --port 3000",
+    "dev": "svelte-kit dev --port 3030",
     "build": "svelte-kit build",
     "preview": "svelte-kit preview --port 3000",
     "lint": "prettier --ignore-path .gitignore --check --plugin-search-dir=. . && eslint --ignore-path .gitignore .",
