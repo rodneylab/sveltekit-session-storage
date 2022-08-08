@@ -1,149 +1,149 @@
 <script>
-	import { browser } from '$app/env';
-	import { validEmail } from '$lib/utilities/form';
-	import { EmailInputField, TextArea, TextInputField } from '@rodneylab/sveltekit-components';
-	import '@fontsource/source-sans-pro';
+  import { browser } from '$app/env';
+  import { validEmail } from '$lib/utilities/form';
+  import { EmailInputField, TextArea, TextInputField } from '@rodneylab/sveltekit-components';
+  import '@fontsource/source-sans-pro/latin.css';
 
-	let name = browser ? window.sessionStorage.getItem('name') ?? '' : '';
-	let email = browser ? window.sessionStorage.getItem('email') ?? '' : '';
-	let message = browser ? window.sessionStorage.getItem('message') ?? '' : '';
+  let name = browser ? window.sessionStorage.getItem('name') ?? '' : '';
+  let email = browser ? window.sessionStorage.getItem('email') ?? '' : '';
+  let message = browser ? window.sessionStorage.getItem('message') ?? '' : '';
 
-	function sessionStore(field, value) {
-		if (browser) {
-			window.sessionStorage.setItem(field, value);
-		}
-	}
+  function sessionStore(field, value) {
+    if (browser) {
+      window.sessionStorage.setItem(field, value);
+    }
+  }
 
-	function clearForm() {
-		if (browser) {
-			sessionStorage.removeItem('name');
-			sessionStorage.removeItem('email');
-			sessionStorage.removeItem('message');
-		}
-		name = '';
-		email = '';
-		message = '';
-	}
+  function clearForm() {
+    if (browser) {
+      sessionStorage.removeItem('name');
+      sessionStorage.removeItem('email');
+      sessionStorage.removeItem('message');
+    }
+    name = '';
+    email = '';
+    message = '';
+  }
 
-	function validateInputs() {
-		errors = { ...errors, ...validEmail(email) };
-	}
+  function validateInputs() {
+    errors = { ...errors, ...validEmail(email) };
+  }
 
-	function handleSubmit() {
-		validateInputs();
-		console.log({ name, email, message });
-		clearForm();
-	}
+  function handleSubmit() {
+    validateInputs();
+    console.log({ name, email, message });
+    clearForm();
+  }
 </script>
 
 <main class="container">
-	<div class="content">
-		<h1>Write a message</h1>
-		<form class="form" on:submit|preventDefault={handleSubmit}>
-			<TextInputField
-				value={name}
-				id="contact-name"
-				placeholder="Blake Costa"
-				title="Name"
-				on:update={(event) => {
-					sessionStore('name', event.detail);
-					name = event.detail;
-				}}
-				style="padding-bottom:1.25rem;margin-right:1rem"
-			/>
-			<EmailInputField
-				value={email}
-				id="contact-email"
-				placeholder="blake@example.com"
-				title="Email"
-				on:update={(event) => {
-					sessionStore('email', event.detail);
-					email = event.detail;
-				}}
-				style="padding-bottom:1.25rem;margin-right:1rem"
-			/>
-			<TextArea
-				value={message}
-				id="contact-message"
-				placeholder="Enter your message here"
-				title="Message"
-				on:update={(event) => {
-					sessionStore('message', event.detail);
-					message = event.detail;
-				}}
-				style="padding-bottom:1.25rem;margin-right:1rem"
-			/>
-			<div class="button-container">
-				<button type="submit">Send your message</button>
-			</div>
-		</form>
-	</div>
+  <div class="content">
+    <h1>Write a message</h1>
+    <form class="form" on:submit|preventDefault={handleSubmit}>
+      <TextInputField
+        value={name}
+        id="contact-name"
+        placeholder="Blake Costa"
+        title="Name"
+        on:update={(event) => {
+          sessionStore('name', event.detail);
+          name = event.detail;
+        }}
+        style="padding-bottom:1.25rem;margin-right:1rem"
+      />
+      <EmailInputField
+        value={email}
+        id="contact-email"
+        placeholder="blake@example.com"
+        title="Email"
+        on:update={(event) => {
+          sessionStore('email', event.detail);
+          email = event.detail;
+        }}
+        style="padding-bottom:1.25rem;margin-right:1rem"
+      />
+      <TextArea
+        value={message}
+        id="contact-message"
+        placeholder="Enter your message here"
+        title="Message"
+        on:update={(event) => {
+          sessionStore('message', event.detail);
+          message = event.detail;
+        }}
+        style="padding-bottom:1.25rem;margin-right:1rem"
+      />
+      <div class="button-container">
+        <button type="submit">Send your message</button>
+      </div>
+    </form>
+  </div>
 </main>
 
 <style>
-	:global(html) {
-		font-family: 'Source Sans Pro';
-		background-color: #007fff;
-		color: #fcfcff;
-		accent-color: #291720;
-	}
+  :global(html) {
+    font-family: 'Source Sans Pro';
+    background-color: #007fff;
+    color: #fcfcff;
+    accent-color: #291720;
+  }
 
-	:global(h1) {
-		font-size: 1.953rem;
-	}
+  :global(h1) {
+    font-size: 1.953rem;
+  }
 
-	:global(input),
-	:global(textarea) {
-		border-style: none;
-		background: #fcfcff;
-		border-radius: 2px;
-		line-height: 1.75;
-		padding: 0 0.5rem;
-		font-size: 1.25rem;
-	}
+  :global(input),
+  :global(textarea) {
+    border-style: none;
+    background: #fcfcff;
+    border-radius: 2px;
+    line-height: 1.75;
+    padding: 0 0.5rem;
+    font-size: 1.25rem;
+  }
 
-	form {
-		margin-top: 1.5rem;
-	}
-	.button-container {
-		display: flex;
-		width: 100%;
-	}
+  form {
+    margin-top: 1.5rem;
+  }
+  .button-container {
+    display: flex;
+    width: 100%;
+  }
 
-	button {
-		cursor: pointer;
-		color: #ffd791;
-		background-color: #291720;
-		border-style: none;
-		border-radius: 1.5rem;
-		font-size: 1.563rem;
-		padding: 0.5rem 1.5rem;
-		margin-top: 1.5rem;
-		margin-left: auto;
-	}
-	@media (prefers-reduced-motion: no-preference) {
-		button {
-			transition: background-color 250ms, color 250ms;
-		}
-	}
-	@media (prefers-reduced-motion: no-preference) {
-		button {
-			transition: background-color 2000ms, color 2000ms;
-		}
-	}
+  button {
+    cursor: pointer;
+    color: #ffd791;
+    background-color: #291720;
+    border-style: none;
+    border-radius: 1.5rem;
+    font-size: 1.563rem;
+    padding: 0.5rem 1.5rem;
+    margin-top: 1.5rem;
+    margin-left: auto;
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    button {
+      transition: background-color 250ms, color 250ms;
+    }
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    button {
+      transition: background-color 2000ms, color 2000ms;
+    }
+  }
 
-	button:hover {
-		background-color: #686963;
-		color: #fcfcff;
-	}
+  button:hover {
+    background-color: #686963;
+    color: #fcfcff;
+  }
 
-	.container {
-		display: flex;
-		flex-direction: column;
-	}
+  .container {
+    display: flex;
+    flex-direction: column;
+  }
 
-	.content {
-		width: 60%;
-		margin: 3rem auto;
-	}
+  .content {
+    width: 60%;
+    margin: 3rem auto;
+  }
 </style>
