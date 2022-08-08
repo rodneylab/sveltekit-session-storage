@@ -1,29 +1,29 @@
 {
-  "name": "sveltekit-session-storage",
-  "version": "0.0.1",
-  "license": "BSD-3-Clause",
-  "description": "SvelteKit Session Storage: how you can improve UX by temporarily caching user form entries then repopulating fields on browser refreshes.",
-  "scripts": {
-    "dev": "vite dev",
-    "build": "vite build",
-    "preview": "vite preview",
-    "lint": "prettier --ignore-path .gitignore --check --plugin-search-dir=. . && eslint --ignore-path .gitignore .",
-    "format": "prettier --ignore-path .gitignore --write --plugin-search-dir=. ."
-  },
-  "devDependencies": {
-    "@fontsource/source-sans-pro": "^4.5.11",
-    "@rodneylab/sveltekit-components": "^0.2.13",
-    "@sveltejs/kit": "next",
-    "eslint": "^8.21.0",
-    "eslint-config-prettier": "^8.5.0",
-    "eslint-plugin-svelte3": "^4.0.0",
-    "prettier": "^2.7.1",
-    "prettier-plugin-svelte": "^2.7.0",
-    "svelte": "^3.49.0",
-    "vite": "^3.0.4"
-  },
-  "type": "module",
-  "peerDependencies": {
-    "vite": "^3.0.4"
-  }
+	"name": "sveltekit-session-storage",
+	"version": "0.0.1",
+	"license": "BSD-3-Clause",
+	"description": "SvelteKit Session Storage: how you can improve UX by temporarily caching user form entries then repopulating fields on browser refreshes.",
+	"scripts": {
+		"dev": "vite dev",
+		"build": "vite build",
+		"preview": "vite preview",
+		"lint": "prettier --ignore-path .gitignore --check --plugin-search-dir=. . && eslint --ignore-path .gitignore .",
+		"format": "prettier --ignore-path .gitignore --write --plugin-search-dir=. ."
+	},
+	"devDependencies": {
+		"@fontsource/source-sans-pro": "^4.5.11",
+		"@rodneylab/sveltekit-components": "^0.2.13",
+		"@sveltejs/kit": "next",
+		"eslint": "^8.21.0",
+		"eslint-config-prettier": "^8.5.0",
+		"eslint-plugin-svelte3": "^4.0.0",
+		"prettier": "^2.7.1",
+		"prettier-plugin-svelte": "^2.7.0",
+		"svelte": "^3.49.0",
+		"vite": "^3.0.4"
+	},
+	"type": "module",
+	"peerDependencies": {
+		"vite": "^3.0.4"
+	}
 }
