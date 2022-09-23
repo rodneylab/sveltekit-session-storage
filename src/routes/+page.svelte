@@ -1,8 +1,9 @@
 <script>
-	import { browser } from '$app/env';
-	import { validEmail } from '$lib/utilities/form';
-	import { EmailInputField, TextArea, TextInputField } from '@rodneylab/sveltekit-components';
+	import { browser } from '$app/environment';
 	import '@fontsource/source-sans-pro/latin.css';
+	import { EmailInputField, TextArea, TextInputField } from '@rodneylab/sveltekit-components';
+
+	export let form;
 
 	let name = browser ? window.sessionStorage.getItem('name') ?? '' : '';
 	let email = browser ? window.sessionStorage.getItem('email') ?? '' : '';
@@ -25,24 +26,17 @@
 		message = '';
 	}
 
-	function validateInputs() {
-		errors = { ...errors, ...validEmail(email) };
-	}
-
-	function handleSubmit() {
-		validateInputs();
-		console.log({ name, email, message });
-		clearForm();
-	}
+	form?.success && clearForm();
 </script>
 
 <main class="container">
 	<div class="content">
 		<h1>Write a message</h1>
-		<form class="form" on:submit|preventDefault={handleSubmit}>
+		<form method="POST" class="form">
 			<TextInputField
 				value={name}
 				id="contact-name"
+				name="contact-name"
 				placeholder="Blake Costa"
 				title="Name"
 				on:update={(event) => {
@@ -54,8 +48,10 @@
 			<EmailInputField
 				value={email}
 				id="contact-email"
+				name="contact-email"
 				placeholder="blake@example.com"
 				title="Email"
+				error={form?.error}
 				on:update={(event) => {
 					sessionStore('email', event.detail);
 					email = event.detail;
@@ -65,6 +61,7 @@
 			<TextArea
 				value={message}
 				id="contact-message"
+				name="contact-message"
 				placeholder="Enter your message here"
 				title="Message"
 				on:update={(event) => {
@@ -82,7 +79,7 @@
 
 <style>
 	:global(html) {
-		font-family: 'Source Sans Pro';
+		font-family: Source Sans Pro;
 		background-color: #007fff;
 		color: #fcfcff;
 		accent-color: #291720;
