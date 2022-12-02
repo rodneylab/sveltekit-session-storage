@@ -1,0 +1,20 @@
+html {
+	font-family: Source Sans Pro;
+	background-color: #007fff;
+	color: #fcfcff;
+	accent-color: #291720;
+}
+
+h1 {
+	font-size: 1.953rem;
+}
+
+input,
+textarea {
+	border-style: none;
+	background: #fcfcff;
+	border-radius: 2px;
+	line-height: 1.75;
+	padding: 0 0.5rem;
+	font-size: 1.25rem;
+}

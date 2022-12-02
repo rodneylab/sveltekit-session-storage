@@ -1,7 +1,8 @@
 <script>
 	import { browser } from '$app/environment';
-	import '@fontsource/source-sans-pro/latin.css';
+	import '@fontsource/source-sans-pro';
 	import { EmailInputField, TextArea, TextInputField } from '@rodneylab/sveltekit-components';
+	import '$lib/styles/global.css';
 
 	export let form;
 
@@ -10,9 +11,7 @@
 	let message = browser ? window.sessionStorage.getItem('message') ?? '' : '';
 
 	function sessionStore(field, value) {
-		if (browser) {
-			window.sessionStorage.setItem(field, value);
-		}
+		if (browser) window.sessionStorage.setItem(field, value);
 	}
 
 	function clearForm() {
@@ -78,27 +77,6 @@
 </main>
 
 <style>
-	:global(html) {
-		font-family: Source Sans Pro;
-		background-color: #007fff;
-		color: #fcfcff;
-		accent-color: #291720;
-	}
-
-	:global(h1) {
-		font-size: 1.953rem;
-	}
-
-	:global(input),
-	:global(textarea) {
-		border-style: none;
-		background: #fcfcff;
-		border-radius: 2px;
-		line-height: 1.75;
-		padding: 0 0.5rem;
-		font-size: 1.25rem;
-	}
-
 	form {
 		margin-top: 1.5rem;
 	}
