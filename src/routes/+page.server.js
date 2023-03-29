@@ -1,5 +1,5 @@
 import { validEmail } from '$lib/utilities/form';
-import { error as svelteKitError, invalid } from '@sveltejs/kit';
+import { error as svelteKitError, fail } from '@sveltejs/kit';
 
 export const actions = {
 	default: async ({ request }) => {
@@ -16,7 +16,7 @@ export const actions = {
 				return { success: true };
 			}
 
-			return invalid(400, { 'contact-email': email, error: errors.email });
+			return fail(400, { 'contact-email': email, error: errors.email });
 		} catch (error) {
 			const message = `Error in /login form: ${error}`;
 			console.error(message);
