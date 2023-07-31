@@ -98,12 +98,16 @@
 	}
 	@media (prefers-reduced-motion: no-preference) {
 		button {
-			transition: background-color 250ms, color 250ms;
+			transition:
+				background-color 250ms,
+				color 250ms;
 		}
 	}
 	@media (prefers-reduced-motion: no-preference) {
 		button {
-			transition: background-color 2000ms, color 2000ms;
+			transition:
+				background-color 2000ms,
+				color 2000ms;
 		}
 	}
 
