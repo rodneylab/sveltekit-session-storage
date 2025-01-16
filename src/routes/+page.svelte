@@ -1,14 +1,14 @@
 <script>
 	import { browser } from '$app/environment';
+	import '$lib/styles/global.css';
 	import '@fontsource/source-sans-pro';
 	import { EmailInputField, TextArea, TextInputField } from '@rodneylab/sveltekit-components';
-	import '$lib/styles/global.css';
 
-	export let form;
+	let form = $props();
 
-	let name = browser ? window.sessionStorage.getItem('name') ?? '' : '';
-	let email = browser ? window.sessionStorage.getItem('email') ?? '' : '';
-	let message = browser ? window.sessionStorage.getItem('message') ?? '' : '';
+	let name = $state(browser ? (window.sessionStorage.getItem('name') ?? '') : '');
+	let email = $state(browser ? (window.sessionStorage.getItem('email') ?? '') : '');
+	let message = $state(browser ? (window.sessionStorage.getItem('message') ?? '') : '');
 
 	function sessionStore(field, value) {
 		if (browser) window.sessionStorage.setItem(field, value);
@@ -25,7 +25,9 @@
 		message = '';
 	}
 
-	form?.success && clearForm();
+	if (form?.success) {
+		clearForm();
+	}
 </script>
 
 <main class="container">
